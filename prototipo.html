@@ -467,7 +467,7 @@
       gap: 5px;
       height: 32px;
       padding: 0 12px;
-      border-radius: 9999px;
+      border-radius: 8px;
       font-size: var(--fs-body-sm);
       font-weight: 600;
       cursor: pointer;
@@ -528,11 +528,12 @@
       box-shadow: var(--shadow-2);
       border: 1px solid var(--border-light);
       padding: 8px 0;
-      animation: popoverIn 200ms cubic-bezier(0.4,0,0.2,1);
+      animation: popoverIn 280ms cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top left;
     }
     @keyframes popoverIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(6px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
     .popover__option {
       display: flex;
@@ -885,25 +886,6 @@
         Tasador
       </a>
 
-      <div class="sidebar__section-label" style="margin-top:16px;">Próximamente</div>
-      <a href="#" class="sidebar__item">
-        <!-- Layout icon -->
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        Landing por propiedad
-        <span class="sidebar__badge">Pronto</span>
-      </a>
-      <a href="#" class="sidebar__item">
-        <!-- Message icon -->
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Agente de consultas
-        <span class="sidebar__badge">Pronto</span>
-      </a>
-      <a href="#" class="sidebar__item">
-        <!-- Users icon -->
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        CRM Inmobiliario
-        <span class="sidebar__badge">Pronto</span>
-      </a>
     </nav>
 
     <div class="sidebar__footer">
@@ -934,46 +916,16 @@
       <div class="uploader">
         <div class="uploader-inner">
 
-          <!-- Estado CON fotos (para el prototipo se muestra este estado) -->
-          <div class="photo-preview" role="img" aria-label="Vista previa de la propiedad">
-            <div class="photo-preview__placeholder">
-              <!-- Simulación de foto cargada -->
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span style="font-size:13px">Foto 1 de la propiedad</span>
+          <!-- Estado VACÍO: sin fotos cargadas -->
+          <div class="dropzone" role="button" tabindex="0" aria-label="Subir fotos de la propiedad" style="border-color: var(--primary); background: var(--surface); aspect-ratio: 4/3;">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity:0.55"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <p class="dropzone__title" style="color: var(--primary); font-size: 15px; font-weight: 700;">Cargá imágenes para ser más preciso en la cotización</p>
+            <p class="dropzone__help">No vale lo mismo una casa impecable que una que necesita refacciones. Las fotos ajustan el estado de conservación.</p>
+            <div class="dropzone__actions">
+              <button class="btn btn--primary" style="height:36px; font-size:13px; padding:0 16px">Elegir fotos</button>
+              <span class="dropzone__sep">o arrastralas acá</span>
             </div>
-          </div>
-
-          <!-- Strip de miniaturas -->
-          <div class="photo-strip" role="list" aria-label="Fotos subidas">
-            <div class="photo-thumb photo-thumb--active" role="listitem" aria-label="Foto 1, seleccionada" tabindex="0">
-              <div class="photo-thumb__img photo-thumb__bg1" aria-hidden="true"></div>
-              <button class="photo-thumb__remove" aria-label="Quitar foto 1">
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              </button>
-            </div>
-            <div class="photo-thumb" role="listitem" aria-label="Foto 2" tabindex="0">
-              <div class="photo-thumb__img photo-thumb__bg2" aria-hidden="true"></div>
-              <button class="photo-thumb__remove" aria-label="Quitar foto 2">
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              </button>
-            </div>
-            <div class="photo-thumb" role="listitem" aria-label="Foto 3" tabindex="0">
-              <div class="photo-thumb__img photo-thumb__bg3" aria-hidden="true"></div>
-              <button class="photo-thumb__remove" aria-label="Quitar foto 3">
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              </button>
-            </div>
-            <button class="photo-add-btn" aria-label="Agregar más fotos">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </button>
-          </div>
-
-          <p class="photo-strip-hint">Sumá frente, living, cocina, baño y algún detalle de terminaciones.</p>
-
-          <!-- Chip análisis OK -->
-          <div class="analysis-chip analysis-chip--ok" role="status" aria-live="polite" aria-label="Análisis de fotos completado">
-            <div class="analysis-chip__dot" aria-hidden="true"></div>
-            Estado detectado: Bueno · 3 fotos analizadas
+            <p class="dropzone__note">Hasta 8 fotos · JPG, PNG, WEBP o HEIC · Tus fotos no se guardan.</p>
           </div>
 
         </div>
@@ -994,27 +946,12 @@
           <span class="filter-group__label" id="label-propiedad">Propiedad</span>
           <div class="filter-pills" role="group" aria-labelledby="label-propiedad">
 
-            <!-- Pill abierta con popover: Operación -->
-            <div class="popover-wrapper">
-              <button class="pill pill--required pill--open" aria-haspopup="listbox" aria-expanded="true" aria-label="Operación: elegir">
-                Operación
-                <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
-              </button>
-              <div class="popover" role="listbox" aria-label="Tipo de operación">
-                <div class="popover__option" role="option" aria-selected="true">
-                  <div class="radio-dot radio-dot--checked" aria-hidden="true"></div>
-                  Venta
-                </div>
-                <div class="popover__option" role="option" aria-selected="false">
-                  <div class="radio-dot" aria-hidden="true"></div>
-                  Alquiler
-                </div>
-                <div class="popover__option" role="option" aria-selected="false">
-                  <div class="radio-dot" aria-hidden="true"></div>
-                  Alquiler temporario
-                </div>
-              </div>
-            </div>
+            <!-- Pill activa: Operación -->
+            <button class="pill pill--required pill--active" aria-haspopup="listbox" aria-expanded="false" aria-label="Operación: Venta">
+              <span aria-hidden="true">·</span>
+              Operación: Venta
+              <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
 
             <!-- Pill activa: Tipo -->
             <button class="pill pill--required pill--active" aria-label="Tipo: Casa" aria-haspopup="listbox" aria-expanded="false">
@@ -1045,36 +982,12 @@
               <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
 
-            <!-- Pill abierta: Localidad -->
-            <div class="popover-wrapper">
-              <button class="pill pill--required pill--open" aria-haspopup="listbox" aria-expanded="true" aria-label="Localidad: elegir">
-                <span aria-hidden="true">·</span>
-                Localidad
-                <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
-              </button>
-              <div class="popover" role="listbox" aria-label="Localidad de Escobar" style="min-width:220px">
-                <div class="popover__option" role="option" aria-selected="false">
-                  <div class="radio-dot" aria-hidden="true"></div>
-                  Belén de Escobar
-                </div>
-                <div class="popover__option popover__option--selected" role="option" aria-selected="true">
-                  <div class="radio-dot radio-dot--checked" aria-hidden="true"></div>
-                  Ing. Maschwitz
-                </div>
-                <div class="popover__option" role="option" aria-selected="false">
-                  <div class="radio-dot" aria-hidden="true"></div>
-                  Garín
-                </div>
-                <div class="popover__option" role="option" aria-selected="false">
-                  <div class="radio-dot" aria-hidden="true"></div>
-                  Matheu
-                </div>
-                <div class="popover__option" role="option" aria-selected="false">
-                  <div class="radio-dot" aria-hidden="true"></div>
-                  Maquinista Savio
-                </div>
-              </div>
-            </div>
+            <!-- Pill vacía: Localidad (depende de Partido) -->
+            <button class="pill pill--required" aria-haspopup="listbox" aria-expanded="false" aria-label="Localidad: elegir">
+              <span aria-hidden="true">·</span>
+              Localidad
+              <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
 
             <button class="pill" aria-label="Barrio cerrado: elegir" aria-haspopup="listbox">
               Barrio cerrado
