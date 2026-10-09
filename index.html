@@ -4,38 +4,63 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tasador inteligente | ARTERIX — Prototipo v0 Fase 3.5</title>
+  <script>try{var t=localStorage.getItem('crm_theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ─── TOKENS CRM ─────────────────────────────────────────── */
+    /* ─── TOKENS CRM (light) ─────────────────────────────────── */
     :root {
-      --sidebar:              #2B3648;
-      --sidebar-hover:        #37455C;
-      --primary:              #2D7FF9;
-      --primary-hover:        #1E6AE0;
-      --primary-surface:      #EEF4FE;
-      --bg:                   #F1F3F6;
-      --surface:              #FFFFFF;
-      --surface-muted:        #F8F9FB;
-      --text:                 #1F2937;
-      --text-muted:           #6B7280;
-      --text-sidebar:         #9CA6B8;
-      --border:               #D1D5DB;
-      --border-light:         #E5E7EB;
-      --success:              #16A34A;
-      --success-surface:      #F0FDF4;
-      --danger:               #DC2626;
-      --danger-surface:       #FEF2F2;
-      --warning:              #D97706;
-      --warning-surface:      #FFFBEB;
-      --info:                 #0EA5E9;
-      --info-surface:         #F0F9FF;
+      color-scheme: light;
+
+      --sidebar:            #2b3648;
+      --sidebar-hover:      #37455c;
+      --on-sidebar:         #fff;
+      --sidebar-divider:    rgba(255,255,255,.07);
+      --primary:            #2d7ff9;
+      --primary-hover:      #1e6ae0;
+      --primary-subtle:     rgba(45,127,249,.06);
+      --primary-text:       #1b64d9;
+      --on-primary:         #fff;
+      --bg:                 #f1f3f6;
+      --surface:            #fff;
+      --surface-muted:      #f8f9fb;
+      --text:               #1f2937;
+      --text-muted:         #5f6875;
+      --text-sidebar:       #9ca6b8;
+      --border:             #d1d5db;
+      --border-light:       #e5e7eb;
+      --border-subtle:      rgba(0,0,0,.08);
+      --success:            #059669;
+      --warning:            #d97706;
+      --danger:             #dc2626;
+      --info:               #2563eb;
+      --shadow-accent:      rgba(45,127,249,.08);
+      --success-foreground: #047857;
+      --success-surface:    rgba(5,150,105,.1);
+      --warning-foreground: #b45309;
+      --warning-surface:    rgba(217,119,6,.1);
+      --danger-foreground:  #b91c1c;
+      --danger-surface:     rgba(220,38,38,.08);
+      --info-foreground:    #1d4ed8;
+      --info-surface:       rgba(37,99,235,.08);
+
+      /* CTA verde ("Crear inmobiliaria" del CRM) */
+      --cta:                #059669;
+      --cta-hover:          #047857;
+      --on-cta:             #fff;
+      --shadow-cta:         rgba(5,150,105,.18);
+
+      /* Overlay sobre fotos */
+      --overlay:            rgba(0,0,0,.65);
 
       /* Sombras teñidas del sidebar */
-      --shadow-1: 0 1px 3px rgba(43,54,72,0.08);
-      --shadow-2: 0 4px 16px rgba(43,54,72,0.10);
-      --shadow-3: 0 8px 32px rgba(43,54,72,0.14);
+      --shadow-1:   0 1px 3px rgba(43,54,72,.08);
+      --shadow-2:   0 4px 16px rgba(43,54,72,.1);
+      --shadow-3:   0 8px 32px rgba(43,54,72,.14);
+      --shadow-bar: 0 -4px 16px rgba(43,54,72,.08);
+
+      --ease-out-expo: cubic-bezier(.22,1,.36,1);
 
       /* Sidebar */
       --sidebar-w: 258px;
@@ -55,6 +80,48 @@
       --lh-heading: 1.2;
     }
 
+    /* ─── TOKENS CRM (dark) ──────────────────────────────────── */
+    .dark {
+      color-scheme: dark;
+
+      --sidebar:            #0d1117;
+      --sidebar-hover:      #1a2029;
+      --primary:            #4d94ff;
+      --primary-hover:      #6ba6ff;
+      --primary-subtle:     rgba(77,148,255,.1);
+      --primary-text:       #4d94ff;
+      --on-primary:         #06101d;
+      --bg:                 #08090c;
+      --surface:            #101318;
+      --surface-muted:      #171b22;
+      --text:               #e9edf3;
+      --text-muted:         #949eae;
+      --text-sidebar:       #8791a1;
+      --border:             #2a313c;
+      --border-light:       #1e242d;
+      --border-subtle:      hsla(0,0%,100%,.09);
+      --success:            #34d399;
+      --warning:            #fbbf24;
+      --danger:             #f87171;
+      --info:               #60a5fa;
+      --shadow-accent:      rgba(77,148,255,.16);
+      --success-foreground: #6ee7b7;
+      --success-surface:    rgba(52,211,153,.14);
+      --warning-foreground: #fcd34d;
+      --warning-surface:    rgba(251,191,36,.14);
+      --danger-foreground:  #fca5a5;
+      --danger-surface:     hsla(0,91%,71%,.14);
+      --info-foreground:    #93c5fd;
+      --info-surface:       rgba(96,165,250,.14);
+
+      --cta:                #2bbf94;
+      --cta-hover:          #34d399;
+      --on-cta:             #fff;
+      --shadow-cta:         rgba(52,211,153,.22);
+
+      --shadow-bar: 0 -4px 16px rgba(0,0,0,.4);
+    }
+
     /* ─── RESET ──────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
@@ -65,6 +132,12 @@
       background: var(--bg);
       line-height: var(--lh-body);
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px var(--shadow-accent), 0 0 0 1px var(--primary);
     }
 
     /* ─── LAYOUT APP ─────────────────────────────────────────── */
@@ -87,27 +160,9 @@
       overflow-y: auto;
     }
 
-    .sidebar__brand {
-      padding: 24px 20px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .sidebar__wordmark {
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: #FFFFFF;
-      text-transform: uppercase;
-    }
-    .sidebar__subtitle {
-      font-size: var(--fs-caption);
-      color: var(--text-sidebar);
-      margin-top: 2px;
-      letter-spacing: 0.02em;
-    }
-
     .sidebar__nav {
       flex: 1;
-      padding: 16px 0;
+      padding: 24px 0 16px;
     }
     .sidebar__section-label {
       font-size: 10px;
@@ -126,33 +181,23 @@
       font-weight: 600;
       color: var(--text-sidebar);
       cursor: pointer;
-      transition: background 200ms ease-out, color 200ms ease-out;
+      transition: background-color 200ms ease-out, color 200ms ease-out;
       text-decoration: none;
       position: relative;
     }
-    .sidebar__item:hover { background: var(--sidebar-hover); color: #FFF; }
+    .sidebar__item:hover { background: var(--sidebar-hover); color: var(--on-sidebar); }
     .sidebar__item--active {
-      background: var(--primary);
-      color: #FFFFFF;
+      background: var(--primary-cta, var(--primary));
+      color: var(--on-primary);
       border-radius: 8px;
       margin: 0 10px;
       padding: 9px 10px;
     }
-    .sidebar__item--active:hover { background: var(--primary-hover); }
-
-    .sidebar__badge {
-      font-size: 10px;
-      font-weight: 700;
-      background: rgba(45,127,249,0.18);
-      color: var(--primary);
-      padding: 2px 7px;
-      border-radius: 9999px;
-      margin-left: auto;
-    }
+    .sidebar__item--active:hover { background: var(--primary-hover); color: var(--on-primary); }
 
     .sidebar__footer {
       padding: 16px 20px;
-      border-top: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid var(--sidebar-divider);
     }
     .sidebar__footer-text {
       font-size: var(--fs-caption);
@@ -176,18 +221,24 @@
     .mobile-header__title {
       font-size: var(--fs-body);
       font-weight: 700;
-      color: #FFFFFF;
+      color: var(--on-sidebar);
     }
     .mobile-header__hamburger {
       background: none;
       border: none;
       color: var(--text-sidebar);
       cursor: pointer;
-      padding: 6px;
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .mobile-header__spacer {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
     }
 
     /* ─── MAIN CONTENT ───────────────────────────────────────── */
@@ -198,8 +249,14 @@
     }
 
     .page-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
       margin-bottom: 20px;
     }
+    .page-header__text { min-width: 0; }
     .page-header__title {
       font-size: var(--fs-page-title);
       font-weight: 700;
@@ -212,9 +269,44 @@
       margin-top: 4px;
     }
 
+    /* ─── THEME SWITCH (Apariencia CRM) ──────────────────────── */
+    .theme-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: var(--surface-muted);
+      flex-shrink: 0;
+    }
+    .theme-switch__opt {
+      width: 32px;
+      height: 32px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 150ms ease-out, color 150ms ease-out;
+    }
+    .theme-switch__opt:hover { color: var(--text); }
+    .theme-switch__opt[aria-checked="true"] {
+      background: var(--bg);
+      color: var(--text);
+      box-shadow: var(--shadow-1);
+    }
+    .theme-switch__opt[aria-checked="true"]:focus-visible {
+      box-shadow: 0 0 0 3px var(--shadow-accent), 0 0 0 1px var(--primary);
+    }
+
     /* ─── CARDS ──────────────────────────────────────────────── */
     .card {
       background: var(--surface);
+      border: 1px solid var(--border-subtle);
       border-radius: 12px;
       box-shadow: var(--shadow-1);
       overflow: hidden;
@@ -245,8 +337,8 @@
 
     /* Empty state */
     .dropzone {
-      background: var(--surface-muted);
-      border: 2px dashed var(--border);
+      background: var(--surface);
+      border: 2px dashed var(--primary);
       border-radius: 12px;
       display: flex;
       flex-direction: column;
@@ -257,22 +349,21 @@
       text-align: center;
       padding: 24px;
       cursor: pointer;
-      transition: border-color 200ms ease-out, background 200ms ease-out;
+      transition: border-color 200ms ease-out, background-color 200ms ease-out;
     }
     .dropzone:hover,
     .dropzone--dragover {
       border-color: var(--primary);
-      background: var(--primary-surface);
+      background: var(--primary-subtle);
     }
     .dropzone__icon {
-      color: var(--text-muted);
-      width: 40px;
-      height: 40px;
+      color: var(--primary);
+      opacity: .55;
     }
     .dropzone__title {
-      font-size: var(--fs-body-sm);
-      font-weight: 600;
-      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-text);
     }
     .dropzone__help {
       font-size: var(--fs-caption);
@@ -301,7 +392,7 @@
       overflow: hidden;
       aspect-ratio: 4/3;
       position: relative;
-      background: #000;
+      background: var(--sidebar);
     }
     .photo-preview__main {
       width: 100%;
@@ -312,13 +403,13 @@
     .photo-preview__placeholder {
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #2B3648 0%, #37455C 100%);
+      background: linear-gradient(135deg, var(--sidebar) 0%, var(--sidebar-hover) 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: rgba(255,255,255,0.4);
+      color: var(--text-sidebar);
       font-size: var(--fs-body-sm);
     }
 
@@ -348,29 +439,27 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      background: linear-gradient(135deg, #37455C, #2B3648);
+      background: linear-gradient(135deg, var(--sidebar-hover), var(--sidebar));
     }
-    .photo-thumb__bg1 { background: linear-gradient(135deg, #4a5568, #2d3748); }
-    .photo-thumb__bg2 { background: linear-gradient(135deg, #374151, #1f2937); }
-    .photo-thumb__bg3 { background: linear-gradient(135deg, #3d4a5c, #2b3648); }
     .photo-thumb__remove {
       position: absolute;
       top: 3px;
       right: 3px;
       width: 18px;
       height: 18px;
-      background: rgba(0,0,0,0.65);
+      background: var(--overlay);
       border-radius: 50%;
       border: none;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: var(--on-sidebar);
       opacity: 0;
       transition: opacity 150ms ease-out;
     }
-    .photo-thumb:hover .photo-thumb__remove { opacity: 1; }
+    .photo-thumb:hover .photo-thumb__remove,
+    .photo-thumb__remove:focus-visible { opacity: 1; }
 
     .photo-add-btn {
       width: 72px;
@@ -388,12 +477,12 @@
       color: var(--text-muted);
       font-size: 10px;
       font-weight: 600;
-      transition: border-color 150ms, background 150ms;
+      transition: border-color 150ms ease-out, background-color 150ms ease-out, color 150ms ease-out;
     }
     .photo-add-btn:hover {
       border-color: var(--primary);
-      background: var(--primary-surface);
-      color: var(--primary);
+      background: var(--primary-subtle);
+      color: var(--primary-text);
     }
 
     .photo-strip-hint {
@@ -416,12 +505,12 @@
     .analysis-chip--loading {
       background: var(--surface-muted);
       color: var(--text-muted);
-      border: 1px solid var(--border-light);
+      border: 1px solid var(--border-subtle);
     }
     .analysis-chip--ok {
       background: var(--success-surface);
-      color: var(--success);
-      border: 1px solid #BBF7D0;
+      color: var(--success-foreground);
+      border: 1px solid transparent;
     }
     .analysis-chip__dot {
       width: 6px;
@@ -468,25 +557,26 @@
       height: 32px;
       padding: 0 12px;
       border-radius: 8px;
+      font-family: inherit;
       font-size: var(--fs-body-sm);
       font-weight: 600;
       cursor: pointer;
       border: 1.5px solid var(--border);
       background: var(--surface);
       color: var(--text);
-      transition: border-color 150ms ease-out, background 150ms ease-out, color 150ms ease-out;
+      transition: border-color 150ms ease-out, background-color 150ms ease-out, color 150ms ease-out;
       position: relative;
       white-space: nowrap;
       user-select: none;
     }
     .pill:hover {
       border-color: var(--primary);
-      color: var(--primary);
+      color: var(--primary-text);
     }
     .pill--active {
-      background: var(--primary-surface);
+      background: var(--primary-subtle);
       border-color: var(--primary);
-      color: var(--primary);
+      color: var(--primary-text);
     }
     .pill--required::before {
       content: '';
@@ -496,13 +586,10 @@
       background: var(--primary);
       flex-shrink: 0;
     }
-    .pill--required.pill--active::before {
-      background: var(--primary);
-    }
     .pill--open {
       background: var(--primary);
       border-color: var(--primary);
-      color: #FFFFFF;
+      color: var(--on-primary);
     }
     .pill__chevron {
       color: currentColor;
@@ -526,7 +613,7 @@
       background: var(--surface);
       border-radius: 12px;
       box-shadow: var(--shadow-2);
-      border: 1px solid var(--border-light);
+      border: 1px solid var(--border-subtle);
       padding: 8px 0;
       animation: popoverIn 280ms cubic-bezier(0.16, 1, 0.3, 1);
       transform-origin: top left;
@@ -543,10 +630,10 @@
       font-size: var(--fs-body-sm);
       color: var(--text);
       cursor: pointer;
-      transition: background 120ms;
+      transition: background-color 120ms ease-out;
     }
     .popover__option:hover { background: var(--surface-muted); }
-    .popover__option--selected { color: var(--primary); font-weight: 600; }
+    .popover__option--selected { color: var(--primary-text); font-weight: 600; }
     .radio-dot {
       width: 16px;
       height: 16px;
@@ -566,7 +653,7 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: #fff;
+      background: var(--on-primary);
     }
 
     /* Filter divider */
@@ -574,6 +661,13 @@
       height: 1px;
       background: var(--border-light);
       margin: 4px 0 16px;
+    }
+
+    .filters-footer {
+      display: none;
+    }
+    .filters-footer-mobile {
+      padding: 12px 16px 16px;
     }
 
     /* ─── STICKY CALC BAR ────────────────────────────────────── */
@@ -584,13 +678,13 @@
       right: 0;
       z-index: 90;
       background: var(--surface);
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-subtle);
       padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      box-shadow: 0 -4px 16px rgba(43,54,72,0.08);
+      box-shadow: var(--shadow-bar);
     }
     .sticky-bar__counter {
       font-size: var(--fs-body-sm);
@@ -601,49 +695,69 @@
       color: var(--text);
     }
 
-    /* ─── BUTTONS ────────────────────────────────────────────── */
+    /* ─── BUTTONS (CRM "Crear inmobiliaria") ─────────────────── */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      height: 40px;
-      padding: 0 20px;
+      gap: 10px;
       border-radius: 8px;
-      font-family: var(--font);
-      font-size: var(--fs-body-sm);
-      font-weight: 700;
-      cursor: pointer;
       border: none;
-      transition: background 150ms ease-out, transform 100ms ease-out;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 600;
+      padding: 12px 24px;
+      cursor: pointer;
       white-space: nowrap;
       text-decoration: none;
+      transition:
+        background-color .2s var(--ease-out-expo),
+        box-shadow .2s var(--ease-out-expo),
+        transform .2s var(--ease-out-expo);
     }
-    .btn:active { transform: scale(0.97); }
+    .btn:active { transform: scale(.97); }
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .btn__icon { flex-shrink: 0; }
 
     .btn--primary {
-      background: var(--primary);
-      color: #FFFFFF;
+      background: var(--cta);
+      color: var(--on-cta);
+      box-shadow: 0 1px 2px var(--shadow-cta);
     }
-    .btn--primary:hover { background: var(--primary-hover); }
-    .btn--primary:disabled {
-      background: var(--border);
-      color: var(--text-muted);
-      cursor: not-allowed;
+    .btn--primary:hover {
+      background: var(--cta-hover);
+      box-shadow: 0 4px 12px var(--shadow-cta);
+      transform: translateY(-1px);
+    }
+    .btn--primary:active { transform: translateY(0) scale(.97); }
+    .btn--primary:focus-visible {
+      box-shadow: 0 0 0 3px var(--shadow-accent), 0 0 0 1px var(--primary);
     }
 
     .btn--ghost {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1.5px solid var(--border);
+      padding: 11px 23px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      transition:
+        background-color .2s var(--ease-out-expo),
+        border-color .2s var(--ease-out-expo),
+        color .2s var(--ease-out-expo),
+        box-shadow .2s var(--ease-out-expo),
+        transform .2s var(--ease-out-expo);
     }
     .btn--ghost:hover {
-      border-color: var(--text-muted);
-      color: var(--text);
+      background: var(--surface-muted);
+      border-color: var(--cta);
+      color: var(--cta);
     }
 
     .btn--full { width: 100%; }
-    .btn--lg { height: 48px; font-size: var(--fs-body); padding: 0 24px; }
 
     /* ─── RESULT CARD ────────────────────────────────────────── */
     .result {
@@ -680,8 +794,8 @@
       font-size: var(--fs-caption);
       font-weight: 700;
       background: var(--success-surface);
-      color: var(--success);
-      border: 1px solid #BBF7D0;
+      color: var(--success-foreground);
+      border: 1px solid transparent;
     }
 
     /* Position bar */
@@ -698,6 +812,7 @@
     .position-bar__track {
       height: 6px;
       background: var(--surface-muted);
+      border: 1px solid var(--border-subtle);
       border-radius: 9999px;
       overflow: hidden;
       position: relative;
@@ -720,7 +835,7 @@
       height: 14px;
       border-radius: 50%;
       background: var(--primary);
-      border: 2px solid #fff;
+      border: 2px solid var(--surface);
       box-shadow: 0 0 0 2px var(--primary);
       transition: left 500ms ease-out;
     }
@@ -735,8 +850,8 @@
 
     .result-panel {
       background: var(--surface-muted);
-      border-radius: 10px;
-      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
       padding: 14px;
     }
     .result-panel__title {
@@ -783,11 +898,11 @@
       border-radius: 9999px;
     }
     .factor-row__pct--up {
-      color: var(--success);
+      color: var(--success-foreground);
       background: var(--success-surface);
     }
     .factor-row__pct--down {
-      color: var(--danger);
+      color: var(--danger-foreground);
       background: var(--danger-surface);
     }
 
@@ -842,74 +957,6 @@
       .filters-footer-mobile { display: none; }
     }
 
-    .filters-footer {
-      display: none;
-    }
-    .filters-footer-mobile {
-      padding: 12px 16px 16px;
-    }
-
-    /* ─── DARK MODE ─────────────────────────────────────────── */
-    :root[data-theme="dark"] {
-      --bg:              #111827;
-      --surface:         #1F2937;
-      --surface-muted:   #1a2535;
-      --text:            #F9FAFB;
-      --text-muted:      #9CA3AF;
-      --border:          #374151;
-      --border-light:    #2D3748;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]):not([data-theme="dark"]) {
-        --bg:              #111827;
-        --surface:         #1F2937;
-        --surface-muted:   #1a2535;
-        --text:            #F9FAFB;
-        --text-muted:      #9CA3AF;
-        --border:          #374151;
-        --border-light:    #2D3748;
-      }
-    }
-
-    /* ─── THEME SWITCHER ─────────────────────────────────────── */
-    --ds-gray-700:  hsla(0,0%,56%,1);
-    --ds-gray-1000: hsla(0,0%,60%,1);
-    --ds-shadow:    rgba(0,0,0,0.18);
-
-    .theme-sw {
-      display: inline-flex;
-      height: 32px;
-      border-radius: 9999px;
-      border: 1px solid var(--ds-shadow);
-      overflow: hidden;
-      background: rgba(255,255,255,0.06);
-      flex-shrink: 0;
-    }
-    .theme-sw__seg {
-      position: relative;
-      display: flex;
-    }
-    .theme-sw__input {
-      appearance: none;
-      position: absolute;
-      margin: 0; padding: 0;
-      width: 0; height: 0;
-    }
-    .theme-sw__label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-      border-radius: 9999px;
-      transition: background 150ms ease-out;
-    }
-    .theme-sw__label:hover { background: rgba(255,255,255,0.08); }
-    .theme-sw__input:checked + .theme-sw__label { background: rgba(255,255,255,0.14); }
-    .theme-sw__icon { fill: var(--ds-gray-700); transition: fill 150ms; }
-    .theme-sw__input:checked + .theme-sw__label .theme-sw__icon { fill: #ffffff; }
-
     /* ─── SCROLLBAR ──────────────────────────────────────────── */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -921,6 +968,8 @@
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
       }
+      .btn--primary:hover,
+      .btn:active { transform: none; }
       .position-bar__fill,
       .position-bar__marker { transition: none; }
     }
@@ -934,39 +983,16 @@
 
   <!-- ─── SIDEBAR (desktop) ─────────────────────────────── -->
   <aside class="sidebar" aria-label="Navegación principal">
-    <nav class="sidebar__nav" aria-label="Herramientas" style="padding-top:24px;">
+    <nav class="sidebar__nav" aria-label="Herramientas">
       <div class="sidebar__section-label">Herramientas</div>
       <a href="#" class="sidebar__item sidebar__item--active" aria-current="page">
-        <!-- Home icon -->
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         Tasador
       </a>
-
     </nav>
 
-    <div class="sidebar__footer" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+    <div class="sidebar__footer">
       <div class="sidebar__footer-text">v0.1 · Estimación orientativa</div>
-      <fieldset class="theme-sw" aria-label="Tema de la interfaz">
-        <legend class="sr-only">Seleccioná el tema:</legend>
-        <div class="theme-sw__seg">
-          <input class="theme-sw__input" type="radio" name="theme-sb" id="ts-sb-sys" value="system" aria-label="Sistema">
-          <label class="theme-sw__label" for="ts-sb-sys" title="Sistema">
-            <svg class="theme-sw__icon" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 3.25C1 1.45507 2.45507 0 4.25 0H11.75C13.5449 0 15 1.45507 15 3.25V15.25V16H14.25H1.75H1V15.25V3.25ZM4.25 1.5C3.2835 1.5 2.5 2.2835 2.5 3.25V14.5H13.5V3.25C13.5 2.2835 12.7165 1.5 11.75 1.5H4.25ZM4 4C4 3.44772 4.44772 3 5 3H11C11.5523 3 12 3.44772 12 4V10H4V4ZM9 13H12V11.5H9V13Z"/></svg>
-          </label>
-        </div>
-        <div class="theme-sw__seg">
-          <input class="theme-sw__input" type="radio" name="theme-sb" id="ts-sb-light" value="light" aria-label="Claro">
-          <label class="theme-sw__label" for="ts-sb-light" title="Claro">
-            <svg class="theme-sw__icon" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.75 0.75V0H7.25V0.75V2V2.75H8.75V2V0.75ZM11.182 3.75732L11.7123 3.22699L12.0659 2.87344L12.5962 2.34311L13.6569 3.40377L13.1265 3.9341L12.773 4.28765L12.2426 4.81798L11.182 3.75732ZM8 10.5C9.38071 10.5 10.5 9.38071 10.5 8C10.5 6.61929 9.38071 5.5 8 5.5C6.61929 5.5 5.5 6.61929 5.5 8C5.5 9.38071 6.61929 10.5 8 10.5ZM8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12ZM13.25 7.25H14H15.25H16V8.75H15.25H14H13.25V7.25ZM0.75 7.25H0V8.75H0.75H2H2.75V7.25H2H0.75ZM2.87348 12.0659L2.34315 12.5962L3.40381 13.6569L3.93414 13.1265L4.28769 12.773L4.81802 12.2426L3.75736 11.182L3.22703 11.7123L2.87348 12.0659ZM3.75735 4.81798L3.22702 4.28765L2.87347 3.9341L2.34314 3.40377L3.4038 2.34311L3.93413 2.87344L4.28768 3.22699L4.81802 3.75732L3.75735 4.81798ZM12.0659 13.1265L12.5962 13.6569L13.6569 12.5962L13.1265 12.0659L12.773 11.7123L12.2426 11.182L11.182 12.2426L11.7123 12.773L12.0659 13.1265ZM8.75 13.25V14V15.25V16H7.25V15.25V14V13.25H8.75Z"/></svg>
-          </label>
-        </div>
-        <div class="theme-sw__seg">
-          <input class="theme-sw__input" type="radio" name="theme-sb" id="ts-sb-dark" value="dark" aria-label="Oscuro">
-          <label class="theme-sw__label" for="ts-sb-dark" title="Oscuro">
-            <svg class="theme-sw__icon" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 8.00005C1.5 5.53089 2.99198 3.40932 5.12349 2.48889C4.88136 3.19858 4.75 3.95936 4.75 4.7501C4.75 8.61609 7.88401 11.7501 11.75 11.7501C11.8995 11.7501 12.048 11.7454 12.1953 11.7361C11.0955 13.1164 9.40047 14.0001 7.5 14.0001C4.18629 14.0001 1.5 11.3138 1.5 8.00005ZM6.41706 0.577759C2.78784 1.1031 0 4.22536 0 8.00005C0 12.1422 3.35786 15.5001 7.5 15.5001C10.5798 15.5001 13.2244 13.6438 14.3792 10.9921L13.4588 9.9797C12.9218 10.155 12.3478 10.2501 11.75 10.2501C8.71243 10.2501 6.25 7.78767 6.25 4.7501C6.25 3.63431 6.58146 2.59823 7.15111 1.73217L6.41706 0.577759ZM13.25 1V1.75V2.75L14.25 2.75H15V4.25H14.25H13.25V5.25V6H11.75V5.25V4.25H10.75L10 4.25V2.75H10.75L11.75 2.75V1.75V1H13.25Z"/></svg>
-          </label>
-        </div>
-      </fieldset>
     </div>
   </aside>
 
@@ -975,51 +1001,48 @@
 
     <!-- Mobile header -->
     <header class="mobile-header" role="banner">
-      <button class="mobile-header__hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="mobile-header__hamburger" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <span class="mobile-header__title">Tasador</span>
-      <fieldset class="theme-sw" aria-label="Tema de la interfaz">
-        <legend class="sr-only">Seleccioná el tema:</legend>
-        <div class="theme-sw__seg">
-          <input class="theme-sw__input" type="radio" name="theme-mob" id="tm-sys" value="system" aria-label="Sistema">
-          <label class="theme-sw__label" for="tm-sys" title="Sistema">
-            <svg class="theme-sw__icon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 3.25C1 1.45507 2.45507 0 4.25 0H11.75C13.5449 0 15 1.45507 15 3.25V15.25V16H14.25H1.75H1V15.25V3.25ZM4.25 1.5C3.2835 1.5 2.5 2.2835 2.5 3.25V14.5H13.5V3.25C13.5 2.2835 12.7165 1.5 11.75 1.5H4.25ZM4 4C4 3.44772 4.44772 3 5 3H11C11.5523 3 12 3.44772 12 4V10H4V4ZM9 13H12V11.5H9V13Z"/></svg>
-          </label>
-        </div>
-        <div class="theme-sw__seg">
-          <input class="theme-sw__input" type="radio" name="theme-mob" id="tm-light" value="light" aria-label="Claro">
-          <label class="theme-sw__label" for="tm-light" title="Claro">
-            <svg class="theme-sw__icon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.75 0.75V0H7.25V0.75V2V2.75H8.75V2V0.75ZM11.182 3.75732L11.7123 3.22699L12.0659 2.87344L12.5962 2.34311L13.6569 3.40377L13.1265 3.9341L12.773 4.28765L12.2426 4.81798L11.182 3.75732ZM8 10.5C9.38071 10.5 10.5 9.38071 10.5 8C10.5 6.61929 9.38071 5.5 8 5.5C6.61929 5.5 5.5 6.61929 5.5 8C5.5 9.38071 6.61929 10.5 8 10.5ZM8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12ZM13.25 7.25H14H15.25H16V8.75H15.25H14H13.25V7.25ZM0.75 7.25H0V8.75H0.75H2H2.75V7.25H2H0.75ZM2.87348 12.0659L2.34315 12.5962L3.40381 13.6569L3.93414 13.1265L4.28769 12.773L4.81802 12.2426L3.75736 11.182L3.22703 11.7123L2.87348 12.0659ZM3.75735 4.81798L3.22702 4.28765L2.87347 3.9341L2.34314 3.40377L3.4038 2.34311L3.93413 2.87344L4.28768 3.22699L4.81802 3.75732L3.75735 4.81798ZM12.0659 13.1265L12.5962 13.6569L13.6569 12.5962L13.1265 12.0659L12.773 11.7123L12.2426 11.182L11.182 12.2426L11.7123 12.773L12.0659 13.1265ZM8.75 13.25V14V15.25V16H7.25V15.25V14V13.25H8.75Z"/></svg>
-          </label>
-        </div>
-        <div class="theme-sw__seg">
-          <input class="theme-sw__input" type="radio" name="theme-mob" id="tm-dark" value="dark" aria-label="Oscuro">
-          <label class="theme-sw__label" for="tm-dark" title="Oscuro">
-            <svg class="theme-sw__icon" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 8.00005C1.5 5.53089 2.99198 3.40932 5.12349 2.48889C4.88136 3.19858 4.75 3.95936 4.75 4.7501C4.75 8.61609 7.88401 11.7501 11.75 11.7501C11.8995 11.7501 12.048 11.7454 12.1953 11.7361C11.0955 13.1164 9.40047 14.0001 7.5 14.0001C4.18629 14.0001 1.5 11.3138 1.5 8.00005ZM6.41706 0.577759C2.78784 1.1031 0 4.22536 0 8.00005C0 12.1422 3.35786 15.5001 7.5 15.5001C10.5798 15.5001 13.2244 13.6438 14.3792 10.9921L13.4588 9.9797C12.9218 10.155 12.3478 10.2501 11.75 10.2501C8.71243 10.2501 6.25 7.78767 6.25 4.7501C6.25 3.63431 6.58146 2.59823 7.15111 1.73217L6.41706 0.577759ZM13.25 1V1.75V2.75L14.25 2.75H15V4.25H14.25H13.25V5.25V6H11.75V5.25V4.25H10.75L10 4.25V2.75H10.75L11.75 2.75V1.75V1H13.25Z"/></svg>
-          </label>
-        </div>
-      </fieldset>
+      <span class="mobile-header__spacer" aria-hidden="true"></span>
     </header>
 
     <!-- Page header -->
     <div class="page-header">
-      <h1 class="page-header__title">Tasador inteligente</h1>
-      <p class="page-header__subtitle">Estimá el valor de tu propiedad con fotos y datos.</p>
+      <div class="page-header__text">
+        <h1 class="page-header__title">Tasador inteligente</h1>
+        <p class="page-header__subtitle">Estimá el valor de tu propiedad con fotos y datos.</p>
+      </div>
+
+      <div class="theme-switch" role="radiogroup" aria-label="Tema de color">
+        <button type="button" class="theme-switch__opt" role="radio" aria-checked="false" aria-label="Automático" data-theme="system" title="Automático" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+        </button>
+        <button type="button" class="theme-switch__opt" role="radio" aria-checked="false" aria-label="Claro" data-theme="light" title="Claro" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <button type="button" class="theme-switch__opt" role="radio" aria-checked="false" aria-label="Oscuro" data-theme="dark" title="Oscuro" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+      </div>
     </div>
 
-    <!-- ─── CARD 1: UPLOADER con fotos cargadas ── -->
+    <!-- ─── CARD 1: UPLOADER ── -->
     <section class="card" aria-label="Subir fotos de la propiedad">
       <div class="uploader">
         <div class="uploader-inner">
 
           <!-- Estado VACÍO: sin fotos cargadas -->
-          <div class="dropzone" role="button" tabindex="0" aria-label="Subir fotos de la propiedad" style="border-color: var(--primary); background: var(--surface); aspect-ratio: 4/3;">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity:0.55"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-            <p class="dropzone__title" style="color: var(--primary); font-size: 15px; font-weight: 700;">Cargá imágenes para ser más preciso en la cotización</p>
+          <div class="dropzone" role="button" tabindex="0" aria-label="Subir fotos de la propiedad" style="aspect-ratio: 4/3;">
+            <svg class="dropzone__icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <p class="dropzone__title">Cargá imágenes para ser más preciso en la cotización</p>
             <p class="dropzone__help">No vale lo mismo una casa impecable que una que necesita refacciones. Las fotos ajustan el estado de conservación.</p>
             <div class="dropzone__actions">
-              <button class="btn btn--primary" style="height:36px; font-size:13px; padding:0 16px">Elegir fotos</button>
+              <button type="button" class="btn btn--primary">
+                <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 5h6"/><path d="M19 2v6"/><path d="M21 11.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/><circle cx="9" cy="9" r="2"/></svg>
+                Elegir fotos
+              </button>
               <span class="dropzone__sep">o arrastralas acá</span>
             </div>
             <p class="dropzone__note">Hasta 8 fotos · JPG, PNG, WEBP o HEIC · Tus fotos no se guardan.</p>
@@ -1043,21 +1066,18 @@
           <span class="filter-group__label" id="label-propiedad">Propiedad</span>
           <div class="filter-pills" role="group" aria-labelledby="label-propiedad">
 
-            <!-- Pill activa: Operación -->
             <button class="pill pill--required pill--active" aria-haspopup="listbox" aria-expanded="false" aria-label="Operación: Venta">
               <span aria-hidden="true">·</span>
               Operación: Venta
               <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
 
-            <!-- Pill activa: Tipo -->
             <button class="pill pill--required pill--active" aria-label="Tipo: Casa" aria-haspopup="listbox" aria-expanded="false">
               <span aria-hidden="true">·</span>
               Tipo: Casa
               <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
 
-            <!-- Pill vacía: Moneda -->
             <button class="pill" aria-label="Moneda: elegir" aria-haspopup="listbox" aria-expanded="false">
               Moneda
               <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1072,14 +1092,12 @@
           <span class="filter-group__label" id="label-ubicacion">Ubicación</span>
           <div class="filter-pills" role="group" aria-labelledby="label-ubicacion">
 
-            <!-- Pill activa: Partido -->
             <button class="pill pill--required pill--active" aria-label="Partido: Escobar" aria-haspopup="listbox">
               <span aria-hidden="true">·</span>
               Partido: Escobar
               <svg class="pill__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
 
-            <!-- Pill vacía: Localidad (depende de Partido) -->
             <button class="pill pill--required" aria-haspopup="listbox" aria-expanded="false" aria-label="Localidad: elegir">
               <span aria-hidden="true">·</span>
               Localidad
@@ -1206,17 +1224,17 @@
         </div>
 
         <!-- Footer desktop con botones -->
-        <div class="filters-footer" aria-label="Acciones">
-          <button class="btn btn--ghost" onclick="return false">Limpiar filtros</button>
-          <button class="btn btn--primary" aria-label="Calcular tasación">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div class="filters-footer">
+          <button type="button" class="btn btn--ghost">Limpiar filtros</button>
+          <button type="button" class="btn btn--primary">
+            <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             Calcular tasación
           </button>
         </div>
 
-        <!-- Footer mobile (solo texto, botón va en sticky bar) -->
-        <div class="filters-footer-mobile" aria-hidden="true">
-          <button class="btn btn--ghost btn--full" style="margin-top:8px">Limpiar filtros</button>
+        <!-- Footer mobile (el botón de calcular va en la sticky bar) -->
+        <div class="filters-footer-mobile">
+          <button type="button" class="btn btn--ghost btn--full">Limpiar filtros</button>
         </div>
 
       </div>
@@ -1321,7 +1339,8 @@
 
         <!-- CTAs -->
         <div class="cta-row">
-          <a href="#" class="btn btn--primary btn--lg" style="text-decoration:none">
+          <a href="#" class="btn btn--primary">
+            <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
             Pedir tasación profesional
           </a>
         </div>
@@ -1337,50 +1356,90 @@
 <div class="sticky-bar" role="region" aria-label="Calcular tasación">
   <div class="sticky-bar__counter">
     <span class="sticky-bar__count">8</span>
-    <span class="sticky-bar__counter"> de 20 completos</span>
+    <span> de 20 completos</span>
   </div>
-  <button class="btn btn--primary" style="min-width:160px" aria-label="Calcular tasación">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+  <button type="button" class="btn btn--primary" style="min-width:160px">
+    <svg class="btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
     Calcular tasación
   </button>
 </div>
 
 <script>
-  /* ── ThemeSwitcher ── */
-  (function() {
-    var stored = localStorage.getItem('theme') || 'system';
+  /* ── Theme switch (Apariencia CRM) ── */
+  (function () {
+    var KEY = 'crm_theme';
+    var root = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var group = document.querySelector('.theme-switch');
+    if (!group) return;
+    var opts = Array.prototype.slice.call(group.querySelectorAll('.theme-switch__opt'));
+    var listening = false;
 
-    function applyTheme(theme) {
-      var root = document.documentElement;
-      if (theme === 'system') {
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-      } else {
-        root.setAttribute('data-theme', theme);
-      }
-      localStorage.setItem('theme', theme);
-      /* sync all switchers */
-      document.querySelectorAll('.theme-sw__input').forEach(function(inp) {
-        inp.checked = inp.value === theme;
-      });
+    function readMode() {
+      try {
+        var v = localStorage.getItem(KEY);
+        return v === 'light' || v === 'dark' ? v : 'system';
+      } catch (e) { return 'system'; }
     }
 
-    applyTheme(stored);
+    function writeMode(mode) {
+      try {
+        if (mode === 'system') localStorage.removeItem(KEY);
+        else localStorage.setItem(KEY, mode);
+      } catch (e) {}
+    }
 
-    document.querySelectorAll('.theme-sw__input').forEach(function(inp) {
-      inp.addEventListener('change', function() {
-        applyTheme(this.value);
+    function onSystemChange(e) { root.classList.toggle('dark', e.matches); }
+
+    function apply(mode) {
+      var isDark = mode === 'dark' || (mode === 'system' && mq.matches);
+      root.classList.toggle('dark', isDark);
+
+      opts.forEach(function (o) {
+        var on = o.getAttribute('data-theme') === mode;
+        o.setAttribute('aria-checked', on ? 'true' : 'false');
+        o.tabIndex = on ? 0 : -1;
+      });
+
+      if (mode === 'system' && !listening) {
+        mq.addEventListener('change', onSystemChange);
+        listening = true;
+      } else if (mode !== 'system' && listening) {
+        mq.removeEventListener('change', onSystemChange);
+        listening = false;
+      }
+    }
+
+    function select(mode) {
+      writeMode(mode);
+      apply(mode);
+    }
+
+    opts.forEach(function (o, i) {
+      o.addEventListener('click', function () { select(o.getAttribute('data-theme')); });
+      o.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = opts[(i + 1) % opts.length];
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = opts[(i - 1 + opts.length) % opts.length];
+        else if (e.key === 'Home') next = opts[0];
+        else if (e.key === 'End') next = opts[opts.length - 1];
+        if (!next) return;
+        e.preventDefault();
+        opts.forEach(function (x) { x.tabIndex = x === next ? 0 : -1; });
+        next.focus();
       });
     });
 
-    /* watch system preference */
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-      if (localStorage.getItem('theme') === 'system') applyTheme('system');
+    group.addEventListener('focusout', function (e) {
+      if (group.contains(e.relatedTarget)) return;
+      apply(readMode());
     });
+
+    apply(readMode());
   })();
 
   /* ── Position bar ── */
-  requestAnimationFrame(function() {
+  requestAnimationFrame(function () {
     var fill = document.querySelector('.position-bar__fill');
     var marker = document.querySelector('.position-bar__marker');
     if (fill) fill.style.width = '55%';
